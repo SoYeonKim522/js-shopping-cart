@@ -1,0 +1,366 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700'); /*google font*/
+
+:root {
+	--primaryColor: #f09d51;
+	--mainWhite: #fff;
+	--mainBlack: #222;
+	--mainGrey: #ececec;
+	--mainSpacing: 0.1rem;
+	--mainTransition: all 0.3s linear; /*apply to all property, 계속 동일한 속도로*/
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	color: var(--mainBlack);
+	background: var(--mainWhite);
+	font-family: 'Lato', sans-serif;
+}
+button:focus {
+	outline: none;
+}
+a {
+	text-decoration: none;
+	color: var(--mainBlack);
+}
+/* --------------- Navbar ---------------- */
+.navbar {
+	position: sticky; /*위치고정*/
+	top: 0; /*위치:맨위에*/
+	z-index: 1; /*항상 보이게*/
+	height: 60px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	background: rgb(231, 226, 221);
+}
+.navbar-center {
+	width: 100%;
+	max-width: 1170px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 1.5rem;
+}
+.nav-icon {
+	font-size: 1.6rem;
+	cursor: pointer;
+	padding: 0.3rem;
+}
+.navbar-center img {
+	width: 230px;
+	height: 30px;
+}
+.nav-icon-cart {
+	font-size: 1.5rem;
+}
+.cart-btn {
+	position: relative; /*cart-items position absolute 이어야 하기 때문에*/
+	cursor: pointer;
+}
+.cart-items {
+	position: absolute;
+	top: -8px;
+	right: -8px;
+	background: var(--primaryColor);
+	padding: 0 5px;
+	border-radius: 30%;
+	color: var(--mainWhite);
+}
+
+.scroll-link {
+	color: var(--mainBlack);
+	text-transform: capitalize;
+	font-size: 1.1rem;
+	padding: 8px 2px;
+	margin-right: 2vw;
+	letter-spacing: var(--mainSpacing);
+	font-weight: 600;
+	transition: all 0.3s linear;
+}
+.scroll-link:hover {
+	color: var(--primaryColor);
+}
+.menu {
+	background: rgb(231, 226, 221);
+	/*display: none;*/ /*display이용해서 토글하려고 하면 transition효과가 안먹힘...*/
+	height: 0; /*높이 이용해서 토글*/
+	overflow: hidden; /*이거까지 해야 글씨 안보임*/
+	width: 100%;
+	transition: all 0.3s linear;
+	position: sticky;
+	top: 60px;
+	z-index: 1;
+}
+.menu-link {
+	padding: 1.2rem 1.4rem;
+	cursor: pointer;
+	width: 100%;
+}
+.menu-link:hover {
+	background-color: wheat;
+}
+.showMenu {
+	/*display: inline-block;*/
+	height: 180px;
+	transition: all 0.3s linear;
+}
+/* --------------- Hero ---------------- */
+.hero {
+	min-height: calc(
+		100vh - 60px
+	); /*navbar높이 뺀거 (Note!: calc 쓸때는 연산기호 사이에 띄어쓰기 해야함!)*/
+	background: url('./images/hero-bcg.jpeg') center/cover no-repeat; /*cover->전체화면 커버*/
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.banner {
+	text-align: center;
+	background: rgba(255, 255, 255, 0.8);
+	display: inline-block; /*높이 줄수있는 inline*/
+	padding: 2rem;
+}
+.banner-title {
+	font-size: 3.4rem;
+	text-transform: uppercase;
+	letter-spacing: var(--mainSpacing);
+	margin-bottom: 3rem;
+}
+.banner-btn {
+	padding: 1rem 3rem;
+	text-transform: uppercase;
+	letter-spacing: var(--mainSpacing);
+	font-size: 1rem;
+	background: var(--primaryColor);
+	color: var(--mainBlack);
+	border: 3px solid var(--primaryColor);
+	transition: var(--mainTransition);
+	cursor: pointer;
+	font-weight: 600;
+}
+.banner .banner-btn:hover {
+	background-color: transparent;
+}
+
+/* --------------- Products ---------------- */
+.products {
+	padding: 4rem 0;
+}
+.section-title h2 {
+	text-align: center;
+	font-size: 2.5rem;
+	margin-bottom: 5rem;
+	text-transform: capitalize;
+	letter-spacing: var(--mainSpacing);
+}
+.products-center {
+	/*모든 상품들이 들어있는 div*/
+	width: 90vw;
+	margin: 0 auto;
+	max-width: 1170px; /*navbar과 똑같이*/
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	/*minmax -> responsive!★,  auto-fit-> 화면너비 다 채우게*/
+	/*ㄴbasic ver:  repeat(4, 1fr)   or   1fr 1fr 1fr 1fr */
+	grid-column-gap: 1.5rem;
+	grid-row-gap: 2rem;
+}
+.img-container {
+	position: relative;
+	overflow: hidden;
+}
+.bag-btn {
+	position: absolute;
+	top: 70%; /*Note: %로도 위치를 줄 수 있음*/
+	right: 0;
+	background: var(--primaryColor);
+	border: none;
+	text-transform: uppercase;
+	padding: 0.5rem 0.75rem;
+	letter-spacing: var(--mainSpacing);
+	font-weight: bold;
+	transition: var(--mainTransition);
+	transform: translateX(101%); /*Note: 이것도 %로 하는게 훨씬 효율적인듯*/
+	cursor: pointer;
+}
+.bag-btn:hover {
+	color: var(--mainWhite);
+}
+.inCart-btn:hover {
+	cursor: auto;
+	color: rgba(84, 84, 84, 0.5); /*hover시 색 안바뀌도록 설정*/
+}
+.fa-shopping-cart {
+	margin-right: 0.5rem;
+}
+.img-container:hover .bag-btn {
+	transform: translateX(0);
+}
+.product-img {
+	display: block;
+	width: 100%;
+	min-height: 12rem;
+	transition: var(--mainTransition);
+}
+.img-container:hover .product-img {
+	opacity: 0.7;
+}
+
+.product h3 {
+	text-transform: capitalize;
+	font-size: 1.1rem;
+	margin-top: 1rem;
+	letter-spacing: var(--mainSpacing);
+	text-align: center;
+}
+
+.product h4 {
+	margin-top: 0.7rem;
+	letter-spacing: var(--mainSpacing);
+	color: var(--primaryColor);
+	text-align: center;
+}
+/* --------------- Cart ---------------- */
+.cart-overlay {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	transition: var(--mainTransition); /*overlay배경도 나타나고 사라질때 효과*/
+	background: rgb(240, 157, 81, 0.5);
+	z-index: 2;
+	visibility: hidden;
+}
+.cart {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	overflow: scroll;
+	z-index: 3;
+	background: rgb(231, 226, 221);
+	padding: 1.5rem;
+	transition: var(--mainTransition);
+	transform: translateX(100%); /*bag-btn 나타나는 것과 같은 방식*/
+}
+.showCart {
+	transform: translateX(0);
+}
+.transparentBcg {
+	visibility: visible;
+}
+.nav-menu {
+	display: flex;
+	background-color: #f09d51;
+}
+
+.close-cart {
+	font-size: 1.7rem;
+	cursor: pointer;
+}
+.btn-wrap {
+	display: flex;
+	justify-content: flex-end; /*이거 하려고 btn-wrap만듬*/
+}
+.clear-cart {
+	display: none;
+	padding: 0.5rem 0.5rem;
+	text-transform: uppercase;
+	letter-spacing: var(--mainSpacing);
+	font-size: 0.7rem;
+	background: var(--mainGrey);
+	color: var(--mainBlack);
+	border: 1px solid var(--mainBlack);
+	transition: var(--mainTransition);
+	cursor: pointer;
+}
+.showBtn {
+	display: block;
+}
+.cart h2 {
+	text-transform: capitalize;
+	text-align: center;
+	letter-spacing: var(--mainSpacing);
+	margin-bottom: 2rem;
+}
+.checkout-btn:disabled {
+	opacity: 60%;
+	cursor: auto;
+}
+.able-btn {
+	opacity: 100%;
+	cursor: pointer;
+}
+.able-btn:hover {
+	background-color: var(--primaryColor);
+}
+/*---------- Cart Item -------------------- */
+.cart-item {
+	display: grid;
+	align-items: center;
+	grid-template-columns: auto 1fr auto; /*auto=>그 요소 자체의 너비 그대로 유지(ex.img width=75px)*/
+	grid-column-gap: 1.5rem;
+	margin: 1.5rem 0;
+}
+.cart-item img {
+	width: 75px;
+	height: 75px;
+}
+.cart-item h4 {
+	font-size: 0.85rem;
+	text-transform: capitalize;
+	letter-spacing: var(--mainSpacing);
+}
+.cart-item h5 {
+	margin: 0.5rem 0;
+	letter-spacing: var(--mainSpacing);
+}
+.item-amount {
+	text-align: center;
+}
+.remove-item {
+	color: grey;
+	cursor: pointer;
+}
+.fa-chevron-up,
+.fa-chevron-down {
+	color: var(--primaryColor);
+	cursor: pointer;
+}
+
+/*---------- End of Cart Item -------------------- */
+
+.cart-footer {
+	margin-top: 2rem;
+	letter-spacing: var(--mainSpacing);
+	text-align: center;
+}
+.cart-footer h3 {
+	text-transform: capitalize;
+	margin-bottom: 1rem;
+}
+
+/*---------- media query -------------------- */
+@media screen and (min-width: 768px) {
+	/*큰화면*/
+	.cart {
+		width: 30vw; /*30% of the screen*/
+		min-width: 450px;
+	}
+	.nav-icon,
+	.menu {
+		display: none;
+	}
+}
+@media screen and (max-width: 767px) {
+	/*작은 화면*/
+	.link-menu {
+		display: none;
+	}
+}

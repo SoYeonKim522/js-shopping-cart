@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comfy House</title>
+    <!--Font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+    <!--css-->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!--navbar-->
+    <nav class="navbar">
+        <div class="navbar-center">
+            <div class="link-menu">
+                <a href='#home' class="scroll-link">home</a>   <!--아예 a태그임!-->
+                <a href='#products' class="scroll-link">products</a>
+            </div>
+            <span class="nav-icon">
+                <i class="fas fa-bars"></i>
+            </span>
+            <img src="./images/logo.svg" alt="store logo">
+            <div class="cart-btn">
+                <span class="nav-icon-cart">
+                    <i class="fas fa-cart-plus"></i>
+                </span>
+                <div class="cart-items">0</div>
+            </div>
+        </div>
+    </nav>
+    <ul class="menu">
+        <li class="scroll-link menu-link">
+            <a href="#products">products</a></li>
+        <li class="scroll-link menu-link">
+            <a href="#">delivery</a></li>
+        <li class="scroll-link menu-link">
+            <a href="#">FAQ</a></li>
+    </ul>
+
+    <div class="main">
+    <!--hero-->
+    <header class="hero" id='home'>
+        <div class="banner">
+            <h1 class="banner-title">furniture collection</h1>
+            <a href = #products class="banner-btn">shop now</a>
+        </div>
+    </header>
+    <!--products-->
+    <section class="products" id='products'>
+        <div class="section-title">
+            <h2>our products</h2>
+        </div>
+        <div class="products-center">        <!--모든 상품들이 들어있는 div-->
+            <!--single product-->
+            <!--
+            <article class="product">
+                <div class="img-container">     이미지와 add to bag를 하나의 div안에 넣어야함
+                    <img src="./images/product-1.jpeg" alt="product" class='product-img'>
+                    <button class="bag-btn" data-id='1'>
+                        <i class="fas fa-shopping-cart"></i> add to bag
+                    </button>
+                </div>
+                <h3>queen bed</h3>
+                <h4>$1500</h4>
+            </article> -->
+        </div>
+    </section>
+    <!--cart-->
+    <div class="cart-overlay">
+        <div class="cart">
+            <span class="close-cart">
+                <i class="fas fa-window-close"></i>
+            </span>
+            <h2>your cart</h2> 
+            <div class="btn-wrap">
+                <button class="clear-cart">clear cart</button>
+            </div>
+            <div class="cart-content">
+                <!--cart item--> <!--
+                <div class="cart-item">
+                    <img src="./images/product-1.jpeg" alt="product">
+                    <div>
+                        <h4>queen bed</h4>s
+                        <h5>$99</h5>
+                        <span class="remove-item">remove</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-chevron-up"></i>
+                        <p class="item-amount">1</p>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div> --><!--end of cart item-->
+            </div>      
+            <div class="cart-footer">
+                <h3 class='yourTotal'>your total : $ <span class='cart-total'>0</span></h3>
+               
+                <button disabled class="banner-btn checkout-btn">check out</button>
+            </div>           
+        </div>
+    </div>
+    </div>
+
+    <!--contentful : js src 보다 위에 넣기-->
+    <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script><!--url로 넣었으니 js에서 require 필요없는듯-->
+    <script src="./myApp.js"></script>  <!--파일명 앞에 ./ (X)-->
+
+</body>
+</html>
